@@ -1,25 +1,62 @@
-import logo from './logo.svg';
 import './App.css';
+//import PropTypes from 'prop-types';
+import { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component{
+  state = {
+    count: 0,
+    minus(params) {
+      console.log("minus");
+    },
+    add(params) {
+      console.log("add");
+    }
+  }
+  render(){
+    return(
+      <div>
+        The Number Is : {this.state.count}
+        <br></br>
+        <button onClick={this.state.add}>+</button> 
+        <button onClick={this.state.minus}>-</button>
+      </div>
+      
+    );
+  }
 }
 
 export default App;
+// const map_test = [
+//   "123", "asd", {name:"test", value:1}
+// ]
+// function Food(props){
+//   return(
+//     <div>
+//       {map_test.map(function(current){
+//         console.log(current);
+//         return current + "\n";
+//       })}
+//       <br></br>
+//       {props.name}
+//       {props.value}
+//     </div>
+//   )
+// }
+
+// Food.propTypes = {
+//   name:PropTypes.string.isRequired,
+//   value:PropTypes.number.isRequired
+// };
+
+// function App() {
+//   return (
+//     <div>
+//       Hello
+//       <Food name="this is food" value={1}></Food>
+//     </div>
+    
+//   );
+// }
+
+// export default App;
