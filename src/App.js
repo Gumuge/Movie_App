@@ -1,62 +1,59 @@
-import './App.css';
-//import PropTypes from 'prop-types';
-import { Component } from 'react';
-
+import React from 'react';
+import "./App.css";
+import { Component } from "react";
+import PropTypes from 'prop-types';
+import axios from "axios";
+import Movies from './Movies';
 
 class App extends Component{
-  state = {
-    count: 0,
-    minus(params) {
-      console.log("minus");
-    },
-    add(params) {
-      console.log("add");
+    state = {
+        isLoading: true,
+        movies: []
     }
-  }
-  render(){
-    return(
-      <div>
-        The Number Is : {this.state.count}
-        <br></br>
-        <button onClick={this.state.add}>+</button> 
-        <button onClick={this.state.minus}>-</button>
-      </div>
-      
-    );
-  }
+    getMovies = async() => {
+        const {data: {data: {movies}}} = await axios.get("https://yts-proxy.nomadcoders1.now.sh/list_movies.json?sort_by=rating");
+        console.log(movies);
+        this.setState({
+            movies,
+            isLoading: false
+        })
+    }
+    componentDidMount(){
+        // setTimeout(function(){
+        //     this.setState({
+        //         isLoading:false
+        //     })
+        // }.bind(this), 6000);
+        this.getMovies();
+    }
+   
+    render(){
+        const {isLoading, movies} = this.state;
+        return(
+            <section className="container">
+            <div>
+                {isLoading? 
+                <div className="loader">
+                    <span className="loader_text">Loading...</span>
+                </div> : 
+                <div>
+                    {movies.map((movie) =>(
+                        <Movies
+                        key={movie.id}
+                        id={movie.id}
+                        year={movie.year}
+                        title={movie.title}
+                        summary={movie.summary}
+                        poster={movie.medium_cover_image}
+                        genres={movie.genres}>
+                        </Movies>
+                    ))}
+                </div>
+                }
+            </div>
+            </section>
+        )
+    }
 }
 
 export default App;
-// const map_test = [
-//   "123", "asd", {name:"test", value:1}
-// ]
-// function Food(props){
-//   return(
-//     <div>
-//       {map_test.map(function(current){
-//         console.log(current);
-//         return current + "\n";
-//       })}
-//       <br></br>
-//       {props.name}
-//       {props.value}
-//     </div>
-//   )
-// }
-
-// Food.propTypes = {
-//   name:PropTypes.string.isRequired,
-//   value:PropTypes.number.isRequired
-// };
-
-// function App() {
-//   return (
-//     <div>
-//       Hello
-//       <Food name="this is food" value={1}></Food>
-//     </div>
-    
-//   );
-// }
-
-// export default App;
