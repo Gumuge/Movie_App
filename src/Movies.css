@@ -1,4 +1,15 @@
+.movie_title{
+    font-size: 30px;
+}
+.movie_year{
+    font-size: 20px;
+}
+.movie_genres{
+    font-size: 20px;
+}
 .movie_summary{
     grid-column-start: 1;
 	grid-column-end: 3;
+    font-size: 20px;
+    margin-left: 250px;
 }
