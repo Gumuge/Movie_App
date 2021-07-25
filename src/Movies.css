@@ -1,15 +1,34 @@
+
 .movie_title{
-    font-size: 30px;
+    font-size: 25px;
 }
 .movie_year{
     font-size: 20px;
 }
 .movie_genres{
+    margin-left: -40px;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    list-style-type: none;
+}
+.genres_genre{
+    float:left;
     font-size: 20px;
+    margin-right: 10px;
 }
 .movie_summary{
-    grid-column-start: 1;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    grid-column-start: 2;
 	grid-column-end: 3;
     font-size: 20px;
-    margin-left: 250px;
+    margin-left: 10px;
+    
+}
+.poster{
+    width: 100%;
+    height: auto;
+}
+.movie_data{
+    margin-left: 15px;
 }

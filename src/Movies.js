@@ -5,7 +5,7 @@ import "./Movies.css";
 function Movies(props){
     return(
         <div className="movie">
-            <img src={props.poster} alt={props.title} title={props.title}></img>
+            <img className="poster" src={props.poster} alt={props.title} title={props.title}></img>
             <div className="movie_data">
                 <h3 className="movie_title">{props.title}</h3>
                 <h3 className="movie_year">{props.year}</h3>
@@ -15,7 +15,7 @@ function Movies(props){
                 ))}
                 </ul>
             </div>
-            <p className="movie_summary">{props.summary}</p>
+            <p className="movie_summary">{props.summary.slice(0, 140)}...</p>
         </div>
     )
 }
